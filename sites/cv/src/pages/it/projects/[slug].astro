@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('projects');
+
+  const paths = pages
+    .filter((page) => page.slug.includes('it'))
+    .map((page) => {
+      const [lang, ...slug] = page.slug.split('/');
+      return {
+        params: { lang, slug: slug.join('/') || undefined },
+        props: page,
+      };
+    });
+
+  return paths;
+}
+
+const page = Astro.props;
+
+const { Content } = await page.render();
+---
+
+<Content />

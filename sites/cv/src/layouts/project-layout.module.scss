@@ -1,0 +1,5 @@
+@import '../global.scss';
+
+.mainMarkdownStyle {
+  @apply container sm:mx-auto p-7 font-mono prose;
+}

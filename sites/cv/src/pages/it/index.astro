@@ -1,0 +1,21 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import Home from '../../components/Home.astro';
+import { getTranslation } from '../../i18n';
+---
+
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Jacopo Martinelli CV</title>
+    <ViewTransitions />
+  </head>
+  <body>
+    <Home>
+      {getTranslation('desctipion', 'it')}
+    </Home>
+  </body>
+</html>

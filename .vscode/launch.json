@@ -1,0 +1,11 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "command": "./node_modules/.bin/nx dev cv",
+      "name": "Start CV site",
+      "request": "launch",
+      "type": "node-terminal"
+    }
+  ]
+}

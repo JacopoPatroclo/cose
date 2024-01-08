@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "drizzle-kit executor",
+  "description": "Execute a drizzle-kit command in the context of the project",
+  "type": "object",
+  "properties": {
+    "command": {
+      "type": "string"
+    },
+    "drizzleConfig": {
+      "type": "string"
+    }
+  },
+  "required": ["command"]
+}

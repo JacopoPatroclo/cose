@@ -1,0 +1,71 @@
+{
+  "name": "nx-drizzle",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/nx-drizzle/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/nx-drizzle",
+        "main": "packages/nx-drizzle/src/index.ts",
+        "tsConfig": "packages/nx-drizzle/tsconfig.lib.json",
+        "assets": [
+          "packages/nx-drizzle/*.md",
+          {
+            "input": "./packages/nx-drizzle/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/nx-drizzle/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/nx-drizzle",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/nx-drizzle",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs nx-drizzle {args.ver} {args.tag} {args.otp}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/nx-drizzle/**/*.ts",
+          "packages/nx-drizzle/package.json",
+          "packages/nx-drizzle/executors.json",
+          "packages/nx-drizzle/generators.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/nx-drizzle/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": ["nx-plugin"]
+}

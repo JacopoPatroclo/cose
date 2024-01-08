@@ -1,0 +1,17 @@
+import { retriveGlobsForDrizzleSchemaForProject } from '<%= packageName %>';
+import type { Config } from 'drizzle-kit';
+
+const projectName = '<%= projectName %>';
+const dependencySchemas = retriveGlobsForDrizzleSchemaForProject(projectName);
+
+export default {
+  schema: [
+    ...dependencySchemas,
+    // Add here your own schema globs if needed
+  ],
+  out: '<%= migrationPositionRelativeToRoot %>',
+  driver: '<%= driver %>',
+  dbCredentials: {
+    connectionString: process.env.DATABASE_URL,
+  },
+} satisfies Config;

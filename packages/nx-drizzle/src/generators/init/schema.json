@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "Init",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "description": "Give the name of the project where the drizzle config will be created",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Provide the name of the project?"
+    },
+    "driver": {
+      "type": "string",
+      "description": "The name of the database driver that will be used in the drizzle config",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "Provide the name of the database driver?"
+    }
+  },
+  "required": ["projectName"]
+}

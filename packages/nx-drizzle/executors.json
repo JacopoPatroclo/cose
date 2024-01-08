@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "drizzle-kit": {
+      "implementation": "./src/executors/drizzle-kit/executor",
+      "schema": "./src/executors/drizzle-kit/schema.json",
+      "description": "drizzle-kit executor"
+    }
+  }
+}

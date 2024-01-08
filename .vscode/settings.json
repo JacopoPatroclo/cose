@@ -1,0 +1,19 @@
+{
+  "eslint.validate": ["json"],
+  "grammarly.selectors": [
+    {
+      "language": "markdown",
+      "scheme": "file",
+      "pattern": "sites/cv/src/content/projects/en/comparator.md"
+    },
+    {
+      "language": "markdown",
+      "scheme": "file",
+      "pattern": "sites/cv/src/content/projects/en/gard.md"
+    },
+    {
+      "language": "markdown",
+      "scheme": "file"
+    }
+  ]
+}
