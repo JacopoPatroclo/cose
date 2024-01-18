@@ -1,6 +1,14 @@
 {
   "name": "@jpmart/fastify-jsx",
   "version": "0.0.1",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "@kitajs/html": "3.0.10",
     "fastify-plugin": "4.5.1",

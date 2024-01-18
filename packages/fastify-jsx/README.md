@@ -1,6 +1,6 @@
 # @jpmart/fastify-jsx
 
-This is a rendering engine for Fastify that supports JSX. The JSX runtime used is the super good [@kitajs/html](https://github.com/kitajs/html?tab=readme-ov-file#migrating-from-html). See their documentation for more information.
+This is a rendering engine for Fastify that supports JSX. The JSX runtime used is the super good [@kitajs/html](https://github.com/kitajsl). See their documentation for more information.
 
 This plugin supports Fastify >= 4.x
 
