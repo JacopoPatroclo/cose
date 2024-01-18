@@ -1,0 +1,45 @@
+{
+  "name": "fastify-jsx",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/fastify-jsx/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/fastify-jsx",
+        "tsConfig": "packages/fastify-jsx/tsconfig.lib.json",
+        "packageJson": "packages/fastify-jsx/package.json",
+        "main": "packages/fastify-jsx/src/index.ts",
+        "additionalEntryPoints": [
+          "packages/fastify-jsx/src/htmx.ts",
+          "packages/fastify-jsx/src/hotwire-turbo.ts"
+        ],
+        "assets": ["packages/fastify-jsx/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs fastify-jsx {args.ver} {args.tag} {args.otp}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/fastify-jsx/jest.config.ts"
+      }
+    },
+    "xss-scan": {
+      "command": "yarn xss-scan --project ./tsconfig.lib.json",
+      "options": {
+        "cwd": "packages/fastify-jsx"
+      }
+    }
+  },
+  "tags": []
+}

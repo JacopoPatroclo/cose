@@ -15,7 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@jpmart/fastify-user-auth": ["packages/fastify-user-auth/src/index.ts"],
+      "@jpmart/fastify-jsx": ["packages/fastify-jsx/src/index.ts"],
+      "@jpmart/fastify-jsx/hotwire-turbo": [
+        "packages/fastify-jsx/src/hotwire-turbo.ts"
+      ],
+      "@jpmart/fastify-jsx/htmx": ["packages/fastify-jsx/src/htmx.ts"],
       "@jpmart/nx-drizzle": ["packages/nx-drizzle/src/index.ts"]
     }
   },

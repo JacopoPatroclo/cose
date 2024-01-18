@@ -1,0 +1,12 @@
+{
+  "name": "@jpmart/fastify-jsx",
+  "version": "0.0.1",
+  "dependencies": {
+    "@kitajs/html": "3.0.10",
+    "fastify-plugin": "4.5.1",
+    "tslib": "2.3.0"
+  },
+  "peerDependencies": {
+    "fastify": "4.*"
+  }
+}
