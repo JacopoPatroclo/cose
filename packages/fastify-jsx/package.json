@@ -2,12 +2,27 @@
   "name": "@jpmart/fastify-jsx",
   "version": "0.0.1",
   "type": "commonjs",
+  "exports": {
+    ".": "./src/index.js",
+    "./htmx": "./src/htmx.js",
+    "./hotwire-turbo": "./src/hotwire-turbo.js"
+  },
+  "typesVersions": {
+    "*": {
+      "/": [
+        "./src/index.d.ts"
+      ],
+      "htmx": [
+        "./src/htmx.d.ts"
+      ],
+      "hotwire-turbo": [
+        "./src/hotwire-turbo.d.ts"
+      ]
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/JacopoPatroclo/cose"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
     "@kitajs/html": "3.0.10",
