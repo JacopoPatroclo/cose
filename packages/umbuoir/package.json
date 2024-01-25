@@ -1,0 +1,24 @@
+{
+  "name": "@jpmart/umbuoir",
+  "version": "0.0.1",
+  "type": "module",
+  "bin": {
+    "umbuoir": "./src/bin/bin.js"
+  },
+  "dependencies": {
+    "tslib": "2.3.0",
+    "yargs": "^17.7.2",
+    "@sinclair/typebox": "^0.32.12",
+    "tailwindcss": "3.4.0",
+    "watcher": "1.2.0",
+    "esbuild": "^0.19.12",
+    "events": "3.3.0",
+    "postcss": "^8.4.33",
+    "postcss-scss": "^4.0.9",
+    "autoprefixer": "^10.4.17",
+    "cssnano": "^6.0.3",
+    "vitest": "^1.2.1",
+    "vite-tsconfig-paths": "^4.3.1",
+    "ora": "^8.0.1"
+  }
+}

@@ -20,7 +20,8 @@
         "packages/fastify-jsx/src/hotwire-turbo.ts"
       ],
       "@jpmart/fastify-jsx/htmx": ["packages/fastify-jsx/src/htmx.ts"],
-      "@jpmart/nx-drizzle": ["packages/nx-drizzle/src/index.ts"]
+      "@jpmart/nx-drizzle": ["packages/nx-drizzle/src/index.ts"],
+      "@jpmart/umbuoir": ["packages/umbuoir/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

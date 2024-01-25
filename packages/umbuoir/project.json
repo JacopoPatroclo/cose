@@ -1,0 +1,35 @@
+{
+  "name": "umbuoir",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/umbuoir/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/umbuoir",
+        "tsConfig": "packages/umbuoir/tsconfig.lib.json",
+        "packageJson": "packages/umbuoir/package.json",
+        "main": "packages/umbuoir/src/index.ts",
+        "assets": ["packages/umbuoir/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs umbuoir {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/umbuoir/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

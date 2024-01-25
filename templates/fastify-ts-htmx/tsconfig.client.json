@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "jsxFragmentFactory": "React.Fragment"
+  },
+  "exclude": [
+    "./**/*.spec.ts",
+    "./**/*.test.ts",
+    "./**/*.spec.tsx",
+    "./**/*.test.tsx",
+    "./.test-utils/**/*.ts",
+    "./server"
+  ],
+  "include": ["./client"]
+}

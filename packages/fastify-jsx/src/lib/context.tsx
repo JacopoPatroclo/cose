@@ -1,5 +1,9 @@
 // inspired by https://github.com/ethanniser/the-beth-stack/blob/main/packages/beth-stack/src/jsx/context.tsx
 
+// DANGER! This implementation is not async safe. The context could be polluted when multiple requests are handled at the same time.
+// and they perform async operations. This is a known issue and will not be fixed.
+// see the readme for more details.
+
 import type { Children } from '@kitajs/html';
 
 class GlobalContextContext {

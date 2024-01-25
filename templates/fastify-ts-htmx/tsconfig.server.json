@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "plugins": [{ "name": "@kitajs/ts-html-plugin" }]
+  },
+  "exclude": [
+    "./**/*.spec.ts",
+    "./**/*.test.ts",
+    "./**/*.spec.tsx",
+    "./**/*.test.tsx",
+    "./.test-utils/**/*.ts",
+    "./client"
+  ],
+  "include": ["./server"]
+}
