@@ -2,6 +2,8 @@ import * as esbuild from 'esbuild';
 import { config } from '../configuration.js';
 import { handleEsbuildException } from './utils.js';
 
+const allowedExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg'];
+
 function getEsbuilgConfig(
   dev: boolean,
   serverConfig: ReturnType<typeof config.getClientConfig>,
@@ -18,9 +20,14 @@ function getEsbuilgConfig(
     minify: !dev,
     assetNames: 'assets/[name]-[hash]',
     publicPath: '/',
-    loader: {
-      '.png': 'file',
-    },
+    tsconfig: serverConfig.tsconfig,
+    loader: allowedExtensions.reduce(
+      (acc, ext) => {
+        acc[ext] = 'file';
+        return acc;
+      },
+      {} as Record<string, esbuild.Loader>,
+    ),
   };
 }
 

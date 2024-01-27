@@ -1,6 +1,5 @@
 import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { DBType } from '@drizzle';
-import { exampleTable } from '@tables';
 import { Home } from './pages';
 
 export interface ExampleModuleOptions {
@@ -10,8 +9,24 @@ export interface ExampleModuleOptions {
 export const exampleModule: FastifyPluginAsyncTypebox<
   ExampleModuleOptions
 > = async (fastify, opts) => {
+  const magicButton = (
+    <button hx-get="/magic" hx-swap="outerHTML">
+      Htmx magic button
+    </button>
+  );
+
   fastify.get('/', async (request, reply) => {
-    const examples = await opts.db.select().from(exampleTable);
-    return reply.html(<Home examples={examples} />);
+    if (request.headers['hx-request'] === 'true') {
+      return reply.html(magicButton);
+    }
+    return reply.html(<Home>{magicButton}</Home>);
+  });
+
+  fastify.get('/magic', async (request, reply) => {
+    return reply.html(
+      <button hx-get="/" hx-swap="outerHTML">
+        Look at that
+      </button>,
+    );
   });
 };

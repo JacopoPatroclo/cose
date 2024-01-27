@@ -15,6 +15,7 @@ function getEsbuilgConfig(
     packages: 'external',
     sourcemap: dev,
     minify: !dev,
+    tsconfig: serverConfig.tsconfig,
   };
 }
 

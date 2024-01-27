@@ -3,12 +3,14 @@ import { Type, Static } from '@sinclair/typebox';
 const serverConfigSchema = Type.Object({
   entrypoint: Type.String(),
   syncFileDirs: Type.Array(Type.String()),
+  tsconfig: Type.Optional(Type.String()),
 });
 
 const clientConfigSchema = Type.Object({
   mainEntrypoint: Type.String(),
   additionalEntrypoints: Type.Array(Type.String()),
   mainCssEntrypoint: Type.String(),
+  tsconfig: Type.Optional(Type.String()),
 });
 
 const testConfigSchema = Type.Object({
@@ -26,6 +28,8 @@ class ConfigurationHolder {
     this.clientConfig.additionalEntrypoints = [];
     this.serverConfig.syncFileDirs = [];
     this.testConfig.tsConfigPaths = [];
+    this.serverConfig.tsconfig = 'tsconfig.server.json';
+    this.clientConfig.tsconfig = 'tsconfig.client.json';
   }
 
   setProjectRoot(rootdir: string) {
@@ -33,13 +37,20 @@ class ConfigurationHolder {
     return this;
   }
 
-  setServerEntrypoint(entrypoint: string) {
+  setServerEntrypoint(entrypoint: string, tsconfig?: string) {
     this.serverConfig.entrypoint = entrypoint;
+    if (tsconfig) {
+      this.serverConfig.tsconfig = tsconfig;
+    }
+
     return this;
   }
 
-  setMainClientEntrypoint(entrypoint: string) {
+  setMainClientEntrypoint(entrypoint: string, tsconfig?: string) {
     this.clientConfig.mainEntrypoint = entrypoint;
+    if (tsconfig) {
+      this.clientConfig.tsconfig = tsconfig;
+    }
     return this;
   }
 
@@ -55,6 +66,11 @@ class ConfigurationHolder {
 
   setSyncFileOrDir(dir: string) {
     this.serverConfig.syncFileDirs?.push(dir);
+    return this;
+  }
+
+  setTestTsConfig(path: string) {
+    this.testConfig.tsConfigPaths?.push(path);
     return this;
   }
 

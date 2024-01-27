@@ -2,6 +2,7 @@ import { expect, test, beforeAll, vi, afterEach } from 'vitest';
 import { makeFastifyApp } from '@mocks';
 
 const { app, query } = makeFastifyApp({
+  ENVIROMENT: 'test',
   DB_SSL: false,
   DB_URL: 'postgres://localhost:5432/postgres',
 });
