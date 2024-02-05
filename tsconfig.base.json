@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@jpmart/esbuild-client-plugin": [
+        "packages/esbuild-client-plugin/src/index.ts"
+      ],
       "@jpmart/fastify-jsx": ["packages/fastify-jsx/src/index.ts"],
       "@jpmart/fastify-jsx/hotwire-turbo": [
         "packages/fastify-jsx/src/hotwire-turbo.ts"
