@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/project-layout.astro
+layout: ../../layouts/project-layout.astro
 title: Global Agency Rates Database tool for Observatory International
 description: A web platform for accessing and comparing agencies from the Observatory International database
 thumbnail: /projects-thumbs/gard.png

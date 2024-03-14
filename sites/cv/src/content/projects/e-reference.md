@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/project-layout.astro
+layout: ../../layouts/project-layout.astro
 title: E-Reference Book Platform
 description: Web portal developed for Way to manage the different configurations for their products
 thumbnail: /projects-thumbs/e-reference.png

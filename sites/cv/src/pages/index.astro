@@ -1,7 +1,11 @@
 ---
+import '../global.scss';
 import { ViewTransitions } from 'astro:transitions';
-import Home from '../components/Home.astro';
-import { getTranslation } from '../i18n';
+import SkillListItem from '../components/skill-list-item.tsx';
+import ExpirianceBox from '../components/expiriance-box';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
 ---
 
 <html lang="en">
@@ -14,8 +18,257 @@ import { getTranslation } from '../i18n';
     <ViewTransitions />
   </head>
   <body>
-    <Home>
-      {getTranslation('desctipion', 'en')}
-    </Home>
+    <div
+      class="container sm:mx-auto p-7 print:mx-0 print:p-0 print:w-full print:min-w-full"
+    >
+      <header class="flex flex-col sm:flex-row gap-6">
+        <div class="max-w-96 print:max-w-36">
+          <img
+            src="/me.jpeg"
+            alt="Jacopo's face"
+            class="rounded-full aspect-square print:w-36"
+          />
+        </div>
+        <div class="flex flex-col gap-2 justify-center">
+          <h2 class="w-full font-semibold text-2xl">
+            Jacopo Martinelli
+            <br />
+            Software Architect
+          </h2>
+          <span class="text-gray-500">✉️ jaco.martin1994@gmail.com</span>
+          <span class="text-gray-500">📍 Trentino Italy</span>
+          <div class="flex flex-row gap-2">
+            <a
+              target="_blank"
+              href="https://github.com/JacopoPatroclo"
+              aria-label="link to github"
+            >
+              <!-- svg github -->
+              <svg
+                height="24"
+                aria-hidden="true"
+                viewBox="0 0 16 16"
+                version="1.1"
+                width="24"
+                data-view-component="true"
+                class="octicon octicon-mark-github v-align-middle color-fg-default"
+              >
+                <path
+                  d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/jacopo-martinelli/"
+              aria-label="link to linkedin"
+            >
+              <!-- svg linkedin -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                data-supported-dps="24x24"
+                fill="currentColor"
+                class="mercado-match"
+                width="24"
+                height="24"
+                focusable="false"
+              >
+                <path
+                  d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </header>
+      <main class="pt-7">
+        <!-- selling paragraph -->
+        <div>
+          <p class="text-base">
+            I see myself as a well-rounded software engineer. I’ve worked
+            extensively in both backend and frontend development. Due to life
+            necessities, I had to move around a lot and expose myself to diverse
+            experiences: from navigating legacy PHP codebases to pioneering
+            green-field projects with the latest web technologies. I understand
+            how good code and great ideas could turn into legacy software and
+            the pitfalls of misguided approaches. I've seen where and how unit
+            testing speeds up a team and where and how they kill productivity. I
+            believe in written-first communication, logical and data-based
+            reasoning, and selecting the right tool for the job. I believe that
+            empowering team members to shine is more valuable than seeking
+            personal recognition. I believe that I'm ignorant the first time I
+            attempt something, but less so the second time. I believe that
+            writing code is overrated and writing about code is underrated. If
+            your team needs someone with energy, innovative ideas, who challenge
+            conventional thinking, someone who aims to create something that
+            adds value for people's lives, then <b>I’m the right fit.</b>
+          </p>
+        </div>
+        <!-- skills -->
+        <div class="grid grid-cols-1 gap-2 md:grid-cols-5 print:grid-cols-5">
+          <div class="pt-8 pr-4">
+            <div class="flex flex-col gap-4 sticky top-3">
+              <h3 class="text-xl font-semibold">Skills</h3>
+              <ul class="list-none list-inside">
+                <SkillListItem
+                  client:load
+                  label="Javascript"
+                  skill="javascript"
+                />
+                <SkillListItem
+                  client:load
+                  label="Typescript"
+                  skill="typescript"
+                />
+                <SkillListItem client:load label="PHP" skill="php" />
+                <SkillListItem client:load label="React" skill="react" />
+                <SkillListItem client:load label="Angular" skill="angular" />
+                <SkillListItem client:load label="NodeJs" skill="nodejs" />
+                <SkillListItem client:load label="Astro" skill="astro" />
+                <SkillListItem client:load label="NextJS" skill="nextjs" />
+                <SkillListItem client:load label="Fastify" skill="fastify" />
+                <SkillListItem client:load label="NestJS" skill="nestjs" />
+                <SkillListItem client:load label="Laravel" skill="laravel" />
+                <SkillListItem client:load label="Drizzle" skill="drizzle" />
+                <SkillListItem client:load label="Typeorm" skill="typeorm" />
+                <SkillListItem client:load label="Postgres" skill="postgres" />
+                <SkillListItem
+                  client:load
+                  label="Terraform"
+                  skill="terraform"
+                />
+                <SkillListItem client:load label="Swift" skill="swift" />
+                <SkillListItem client:load label="Nx" skill="nx" />
+                <SkillListItem client:load label="I.C." skill="i.c." />
+                <SkillListItem
+                  client:load
+                  label="Client management"
+                  skill="client_management"
+                />
+              </ul>
+              <h3 class="text-xl font-semibold">Languages</h3>
+              <ul>
+                <li class="text-sm">Italian (Native)</li>
+                <li class="text-sm">English (B2)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="pt-8 flex flex-col gap-4 col-span-4">
+            <h3 class="text-xl font-semibold">My story</h3>
+            <div class="flex flex-col gap-4">
+              <ExpirianceBox
+                client:load
+                skills={[
+                  'nx',
+                  'typescript',
+                  'javascript',
+                  'react',
+                  'nodejs',
+                  'astro',
+                  'nestjs',
+                  'fastify',
+                  'nextjs',
+                  'terraform',
+                  'drizzle',
+                  'postgres',
+                  'typeorm',
+                  'client_management',
+                  'i.c.',
+                ]}
+                title="F.Technology: Software Architect & Partner"
+                description="In this role I had the task, joined by another parner, to create and manage a new team from scratch. The business requirements where to assemble a group of developers and designers to create software product using modern technologies and metodologies. The goal was to enable the company to be more competitive in the market. I was in charge of the technical part of the team, I was responsible for the technical choices and the development of the software products. I was also in charge of the recruitment of new developers and the management of the team. We applied the agile metodology and we used the Scrum framework. We automated the development process using Gitlab CI/CD and we used Docker to deploy the software products. We used Typescript and React for the frontend and Fastify for the backend. All of this was enabled by the use of a monorepo managed by Nx. I'm proud of the work I've done in this role, I've learned a lot and I've grown a lot as a developer and as a person. Now I'm ready for a new challenge."
+                date="2020 - Present"
+              />
+              <ExpirianceBox
+                client:load
+                skills={['angular', 'typescript', 'javascript', 'nx', 'i.c.']}
+                title="R3Gis: Mid Frontend Angular Developer"
+                description="This was my first product company experience. I've worked mainly with Angular and I was one of the mantainer of the frontend part of the main company product. Thata piece of infrastructure was developed inside a monorepo that used Nx. Here I improved my git skills and I learned how to work with a team of developers."
+                date="2019 - 2020"
+              />
+              <ExpirianceBox
+                client:load
+                skills={[
+                  'php',
+                  'laravel',
+                  'terraform',
+                  'postgres',
+                  'fastify',
+                  'i.c.',
+                  'client_management',
+                ]}
+                title="Caffeina: Backend PHP Developer"
+                description="I've worked mainly with Docker and the Gitlab Cl/CD service, setting up and maintaining a continuous integration and continuous delivery pipelines. Projects were written in PHP and JavaScript: Laravel and Express for the backend and React for the frontend. I've been in charge of two main projects and I was appointed as the technical figure who regularly interacted with clients. I was also assigned to mentor new junior developers of the team and I participated to the planning and development of two open source projects of the company."
+                date="2018 - 2019"
+              />
+              <ExpirianceBox
+                client:load
+                skills={['php', 'i.c.']}
+                title="Farnedi ICT: Full-Stack Developer"
+                description="My job consisted in planning and developing web based applications from scratch. I've learnt how to maintain and deploy medium and large scale application. I've worked mainly with React and Angular on the Frontend and with Node.js, Express and Sequelize on the Backend."
+                date="Mar 2017 - Nov 2018"
+              />
+              <ExpirianceBox
+                client:load
+                skills={['swift', 'i.c.']}
+                title="Motorialab: Sviluppatore Ios (Swift)"
+                description="I've contributed to the development of a native iOS app, especially on the Frontend part of the application, using Swift and Obj-C."
+                date="Apr 2016 - Sept 2016"
+              />
+              <ExpirianceBox
+                client:load
+                skills={['php', 'i.c.', 'swift']}
+                title="OpenMove: Android & iOS Developer (stage)"
+                description="I have worked with Obj-C, Java for Android and HTML+CSS+JS in a Cordova environment, developing for both iOS and Android devices."
+                date="Jan 2015 - Apr 2015"
+              />
+              <ExpirianceBox
+                client:load
+                skills={[]}
+                title="Farnedi ICT: Web Developer"
+                description="My job was to develop and maintain a series of websites on Wordpress using my knowledge of PHP, Javascript, JQuery, HTML and CSS."
+                date="Jan 2014 - Mar 2014"
+              />
+              <ExpirianceBox
+                client:load
+                skills={[]}
+                title="University of Trento: Bachelor's Degree in Computer Science"
+                description="At university I have mostly improved my ability to learn quickly and efficiently new programming languages. I have followed many courses on functional programming, objective-oriented programming, networking, algorithms and machine learning."
+                date="2013 - 2018"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- portfolio -->
+        <div class="pt-8">
+          <h3 class="text-xl font-semibold">Projects</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
+            {
+              allProjects.map((item) => (
+                <a
+                  target={item.data.redirectUrl ? '_blank' : '_self'}
+                  href={item.data.redirectUrl || `/projects/${item.slug}`}
+                >
+                  <div class="flex flex-col gap-4 bg-white p-4 rounded transition-shadow shadow-lg hover:shadow-sm">
+                    <img
+                      class="h-56 object-contain"
+                      src={item.data.thumbnail}
+                      alt={item.data.description}
+                    />
+                    <div class="flex flex-col gap-2">
+                      <span class="text-l font-semibold">
+                        {item.data.title}
+                      </span>
+                      <span class="text-sm">{item.data.description}</span>
+                    </div>
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </main>
+    </div>
   </body>
 </html>

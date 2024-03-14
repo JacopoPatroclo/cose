@@ -1,6 +1,0 @@
-packages:
-  - 'sites/*'
-  - 'packages/*'
-  - '!**/test/**'
-  - '!tools/**'
-  - '!templates/**'

@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/project-layout.astro
+layout: ../../layouts/project-layout.astro
 title: Wine App for Enartis
 description: Web app for wine producers to manage their wine tasting sessions
 thumbnail: /projects-thumbs/wineapp.png

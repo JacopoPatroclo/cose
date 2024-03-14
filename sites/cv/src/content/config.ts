@@ -13,11 +13,3 @@ const projectsCollection = defineCollection({
 export const collections = {
   projects: projectsCollection,
 };
-
-export function relosveProjectsUrl(slug: string) {
-  const [lang, ...restOfTheSlug] = slug.split('/');
-  if (lang === 'en') {
-    return `/projects/${restOfTheSlug}`;
-  }
-  return `${lang}/projects/${restOfTheSlug}`;
-}

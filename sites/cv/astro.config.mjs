@@ -7,12 +7,13 @@ import solidJs from '@astrojs/solid-js';
 export default defineConfig({
   output: 'static',
   site: 'https://jacopomartinelli.me',
-  i18n: {
-    routing: {
-      prefixDefaultLocale: false,
-    },
-    defaultLocale: 'en',
-    locales: ['en', 'it'],
-  },
   integrations: [tailwind(), sitemap(), solidJs()],
+  vite: {
+    server: {
+      fs: {
+        // Allow serving files from one level up to the project root
+        allow: ['../..'],
+      },
+    },
+  },
 });

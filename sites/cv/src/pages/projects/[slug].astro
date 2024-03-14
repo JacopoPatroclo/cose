@@ -4,27 +4,25 @@ import { getCollection } from 'astro:content';
 export async function getStaticPaths() {
   const pages = await getCollection('projects');
 
-  const paths = pages
-    .filter((page) => page.slug.includes('en'))
-    .map((page) => {
-      const [lang, ...slug] = page.slug.split('/');
-      return {
-        params: { lang, slug: slug.join('/') || undefined },
-        props: page,
-      };
-    });
+  const paths = pages.map((page) => {
+    return {
+      params: { slug: page.slug },
+      props: { page },
+    };
+  });
 
   return paths;
 }
 
-const page = Astro.props;
+const { page } = Astro.props;
 
 const { Content } = await page.render();
 ---
 
 {
-  page.data.redirectUrl && (
+  page.data.redirectUrl ? (
     <meta http-equiv="refresh" content={`0; url=${page.data.redirectUrl}`} />
+  ) : (
+    <Content />
   )
 }
-<Content />
